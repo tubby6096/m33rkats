@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M33RKATS </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+    @font-face {
+  font-family: "Gt";
+  src: url(font/GTWalsheimPro-Regular.ttf);
+}
+@font-face {
+  font-family: "hpunk";
+  src: url(font/hpunk.ttf);
+}
+*, *::before, *::after{
+  -webkit-box-sizing:padding-box;
+  box-sizing:padding-box;
+}
+html,body { height:100%; }
+body{
+    font-family: "Gt";
+  background:#CCC;
+}
+
+
+
+body,
+div,
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
+  font-size: 16pt;
+}
+.navbar{
+    background-color: #DEF2F1;
+    color: black;
+}
+.nav-link{
+    font-family: "hpunk";
+    color: black;
+}
+.navbar-toggler-icon{
+    color: black;
+}
+.tickerwrapper {
+  /* #17252A #2B7A78 #3AAFA9 #DEF2F1  */
+
+  position: relative;
+  top: 30px;
+width: 99.9%;
+  border: 1px solid #444;
+  border-top: 4px solid #17252A;
+  border-bottom: 4px solid #3AAFA9;
+  background: #fff;
+  height: 60px;
+  overflow: hidden;
+  cursor: pointer;
+  transform: rotate(3.2deg);
+}
+.second-ticker{
+    transform: rotate(-3.2deg);
+}
+ul.list {
+  position: relative;
+  display: inline-block;
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+ul.list.cloned {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+ul.list li {
+  float: left;
+  padding-left: 20px;
+}
+.listitem{
+    font-family: "hpunk";
+    font-size: 40px;
+}
+.first-cover{
+    position: relative;
+    padding-top: 418px;
+    background-image: url(images/1stcover.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 539px;
+}
+.first-cover-bg{
+    position: fixed;
+    width: 200%;
+    background-color: white;
+    height: 400px;
+    margin-top: 53px;
+    
+    left: -21px;
+
+    /* width: 99%; */
+    transform: rotate(3.2deg);
+}
+.second-cover{
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('images/2ndcover.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* height: 600px; */
+    /* display: flex; */
+  justify-content: center;
+  align-items: center; 
+   }
+.third-cover{
+    background: linear-gradient( rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0) ), url('images/3rdcover.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    margin-top: -60px;
+   }
+   .ticker-2{
+    top: -10px;
+    transform: rotate(-3.2deg);
+    
+   }
+   .ticker-loaders{
+    position: absolute;
+   }
+   .ticker-4{
+    transform: rotate(-90.2deg);
+    width: 200vh;
+   }
+   .ticker-5{
+    margin-top: 100px;
+    transform: rotate(-7.2deg);
+    width: 200vh;
+   }
+.section-p{
+    padding: 30px;
+    padding-top: 120px;
+     color: white;
+}
+.section-text{
+    font-size: 1rem;
+}
+.section-header{
+    font-family: "hpunk";
+}
+.section-b{
+    font-family: "hpunk";
+font-weight: 700;
+letter-spacing: 1.5px;
+}
+.img-logo{
+    width: 550px;
+    height: 550px;
+    position: absolute;
+    top: 192px;
+    z-index: 10;
+    
+}
+@media (max-width:768px ) {
+    .first-cover{
+    padding-top: 300px;
+    background-image: url("images/1stcover.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+}
+.first-cover-bg{
+
+    margin-top: 42px;
+
+}
+.img-logo{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 220px;
+    z-index: 10;
+}
+    .tickerwrapper {}
+}
+@media (min-width:1068px ) {
+    .tickerwrapper {
+        height: 120px;
+    }
+    .listitem{
+    font-family: "hpunk";
+    font-size: 70px;
+}
+
+}
+@media (max-width:576px) {
+    .first-cover-bg{
+margin-top: 39px;
+
+}
+}
+#loading {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 99;
+  background-color: black;
+  transition: opacity 2s linear;  
+  transform:translate(0);
+    -webkit-animation-name: blackWhite;  
+    -webkit-animation-iteration-count: infinite;  
+    -webkit-animation-duration: 4s; 
+}
+.loader-image{
+  height: 500px;
+  width: 500px;
+}
+.close-loader{
+    /* display: none!important; */
+    visibility: hidden;
+    opacity: 0;
+    transform:translate(9999px);
+ 
+}
+@-webkit-keyframes blackWhite {  
+  0% { background-color: black; }
+  50% { background-color: black; }
+  51% { background-color: black; }
+  100% { background-color: white; }
+}
+.card{
+  height: 100%;
+}
+.card-text{
+  font-size: 0.85rem;
+}
+</style>
+</head>
+<body>
+    <div id="loading">
+        <!-- <div class="tickerwrapper ticker-loaders ticker-3">
+            <ul class='list'>
+               <li class='listitem'>
+                 <span> • 150+ attributes</span>
+               </li>
+               <li class='listitem'>
+                 <span> • 5555 M33RKATS hanging loose on Aptos</span>
+               </li>
+               <li class='listitem'>
+                <span> • 150+ attributes</span>
+              </li>
+              <li class='listitem'>
+                <span> • 5555 M33RKATS hanging loose on Aptos</span>
+              </li>
+           </ul>
+         </div>
+         <div class="tickerwrapper ticker-loaders ticker-4">
+            <ul class='list'>
+               <li class='listitem'>
+                 <span> • 150+ attributes</span>
+               </li>
+               <li class='listitem'>
+                 <span> • 5555 M33RKATS hanging loose on Aptos</span>
+               </li>
+               <li class='listitem'>
+                <span> • 150+ attributes</span>
+              </li>
+              <li class='listitem'>
+                <span> • 5555 M33RKATS hanging loose on Aptos</span>
+              </li>
+           </ul>
+         </div>
+         <div class="tickerwrapper ticker-loaders ticker-5">
+            <ul class='list'>
+               <li class='listitem'>
+                 <span> • 150+ attributes</span>
+               </li>
+               <li class='listitem'>
+                 <span> • 5555 M33RKATS hanging loose on Aptos</span>
+               </li>
+               <li class='listitem'>
+                <span> • 150+ attributes</span>
+              </li>
+              <li class='listitem'>
+                <span> • 5555 M33RKATS hanging loose on Aptos</span>
+              </li>
+           </ul>
+         </div> -->
+<img src="images/logo.png" class="loader-image"/>
+
+    </div>
+    <nav class="navbar navbar-expand-sm">
+        <a class="navbar-brand" href="#"><img src="images/logo-m33rkat.png"  width="60" height="60" class="d-inline-block align-top"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="https://discord.gg/HUQXAymdRN">Discord</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://twitter.com/M33rkats_">Twiiter</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+<div class="first-cover">
+    <img src="images/logo.png" class="img-logo"/>
+    <div class="tickerwrapper ticker-1">
+        <ul class='list'>
+           <li class='listitem'>
+             <span> • 150+ attributes</span>
+           </li>
+           <li class='listitem'>
+             <span> • 5555 M33RKATS hanging loose on Aptos</span>
+           </li>
+           <li class='listitem'>
+            <span> • 150+ attributes</span>
+          </li>
+          <li class='listitem'>
+            <span> • 5555 M33RKATS hanging loose on Aptos</span>
+          </li>
+       </ul>
+     </div>
+     <div class="second-cover">
+        <div class="section-p container d-flex justfiy-content-center ">
+            <div class="row">
+            <div class="col-sm-12 col-md-12 col-xl-3 mb-5 section-text">
+           <div class="section-header"> HANG LOOSE 🤙</div>
+            Hang Loose symbolizes the positive vibes and <span class="section-b">DGAF</span> humor <span class="section-b" >M33rkats</span> have.
+            Relaxing and vibing wherever we find our selves.
+        </div>
+        <div class="col-sm-12 col-md-12 col-xl-3  section-text">
+            Welcome to <span class="section-b">M33RTOPIA</span> where everyone is welcomed with open paws .
+        </br>
+            Enter into the hub of creativity and growth. Alone we are small, together we are a force to reckon.
+            From the M33RKATS Team, we are asking you to  have fun and <span class="section-b">HANG LOOSE 🤙</span>.
+            </div>
+        </div>
+     
+        </div>
+        <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-xl-4 mb-5 section-text">
+            <div class="card">
+              <img class="card-img-top" src="images/profiles/miakyato-1.png" data-profile="miakyato" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Miakyato</h5>
+                <p class="card-text">Founder And Front End Web Developer
+                  Project founder and Head developer Miakyato has had experience working with different projects prior to this. His love for building solid projects and art has led him to create something to drive his passion further.
+                  He has a ton of experience working on the web3 three projects on different block chains.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xl-4 mb-5 section-text">
+            <div class="card">
+              <img class="card-img-top" src="images/profiles/locke-1.png" data-profile="locke" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Locke</h5>
+                <p class="card-text">Operations Manager
+                  Locke is the current Operations Manager at M33kat.
+                  Locke has been working as an Operations Manager for more than 2 years making the transition from Web2 to Web3 as he saw a need to bridge the gap between these two differing worlds. a skilled product designer and project manager who is driven to make progressive change to the web3 industry. Locke excels at building businesses and managing teams</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xl-4 mb-5 section-text">
+            <div class="card">
+              <img class="card-img-top image-hover" src="images/profiles/sushi-1.png" data-profile="sushi" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Sushii</h5>
+                <p class="card-text">Animator
+                  Sushi is a young and aspiring digital Illustrator whose works have caught the eye of many with his breathtaking way of using his art as a means to tell stories. After starting his journey into the digital art world as a hobby, Sushi has turned a hobby into a means to satiate his hunger for creativity and express himself in different ways for others to relate. Sushi is responsible for the animation of the project alongside Jerry providing the team with the necessary art skills needed.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xl-4 mb-5 section-text">
+            <div class="card">
+              <img class="card-img-top" src="images/profiles/RNX-1.png" data-profile="RNX" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">RNX</h5>
+                <p class="card-text">Creative Director
+                  RNX is a Digital Artist who was exposed to art and the creative world at a very young age. His history with the principles of art helps his transition from physical to digital art be seamless. With over a 2years of experience in working with various companies and comic studios, this feels like a step in the right direction. This project provides an opportunity to quench his burning desire to impact the world through his art. RNX would be taking charge of the overall direction of the art and the team guiding them every step of the way.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xl-4 mb-5 section-text">
+            <div class="card">
+              <img class="card-img-top" src="images/profiles/vana-1.png" data-profile="vana" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Nirvana</h5>
+                <p class="card-text">Concept Designer
+                  Nirvana saw his artistic skills as a way to express his ideas and feelings, and create a positive impact in his environment both far and beyond. With his wealth of experience working on different projects on the WEB2 market, he feels this is the right opportunity to make the transition to WEB3. His primary role on the M33rkats team would be communicating the core idea driving the design of the project to the team and the community.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xl-4 mb-5 section-text">
+            <div class="card">
+              <img class="card-img-top" src="images/profiles/jerry-1.png" data-profile="jerry" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Jerry</h5>
+                <p class="card-text">Illustrator
+                  Jerry is a teenager with a lot of artistic talents. Jerry is a new face to the WEB3 world as he is starting life in the NFT space, this project would be his opportunity to make his mark on a new chain and take advantage of this very good opportunity. He would be assisting Sushi on the art production of the M33rkats project.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+ 
+     <div class="tickerwrapper ticker-2">
+        <ul class='list'>
+           <li class='listitem'>
+             <span> • 150+ attributes </span>
+           </li>
+           <li class='listitem'>
+             <span> • 5555 generative M33rkats NFTs</span>
+           </li>
+           <li class='listitem'>
+            <span> • Come hang loose🤙🏾</span>
+          </li>
+          <li class='listitem'>
+            <span> • With us in M33RTOPIAs</span>
+          </li>
+       </ul>
+       
+     </div>
+     <div class="third-cover">
+
+    </div>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(".card-img-top").hover(function(){
+      profile = $(this).data("profile")
+      $(this).attr("src", `images/profiles/${profile}-2.png`)
+    }, function(){
+      $(this).attr("src", `images/profiles/${profile}-1.png`)
+  })
+    setTimeout(()=>{
+        $("#loading").addClass("close-loader")
+    },2500)
+
+var $tickerWrapper= $(".ticker-1");
+var $tickerWrapper2 = $(".ticker-2");
+var $tickerWrapper3 = $(".ticker-3");
+var $tickerWrapper4 = $(".ticker-4");
+var $tickerWrapper5 = $(".ticker-5");
+ticker($tickerWrapper,25)
+ticker($tickerWrapper2,25)
+ticker($tickerWrapper3,5)
+ticker($tickerWrapper4,3)
+ticker($tickerWrapper5,5)
+function ticker(wrapper,time){
+var $list = wrapper.find("ul.list");
+var $clonedList = $list.clone();
+var listWidth = 10;
+
+$list.find("li").each(function (i) {
+			listWidth += $(this, i).outerWidth(true);
+});
+
+var endPos = wrapper.width() - listWidth;
+
+$list.add($clonedList).css({
+	"width" : listWidth + "px"
+});
+
+$clonedList.addClass("cloned").appendTo(wrapper);
+
+//TimelineMax
+var infinite = new TimelineMax({repeat: -1, paused: true});
+
+infinite
+  .fromTo($list, time, {rotation:0.01,x:0}, {force3D:true, x: -listWidth, ease: Linear.easeNone}, 0)
+  .fromTo($clonedList, time, {rotation:0.01, x:listWidth}, {force3D:true, x:0, ease: Linear.easeNone}, 0)
+  .set($list, {force3D:true, rotation:0.01, x: listWidth})
+  .to($clonedList, time, {force3D:true, rotation:0.01, x: -listWidth, ease: Linear.easeNone}, time)
+  .to($list, time, {force3D:true, rotation:0.01, x: 0, ease: Linear.easeNone}, time)
+  .progress(1).progress(0)
+  .play();
+
+//Pause/Play		
+wrapper.on("mouseenter", function(){
+	infinite.pause();
+}).on("mouseleave", function(){
+	infinite.play();
+});
+}
+</script>
+</body>
+</html>
